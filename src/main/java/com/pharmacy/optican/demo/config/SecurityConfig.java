@@ -1,5 +1,4 @@
 package com.pharmacy.optican.demo.config;
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -20,7 +19,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
-        http.formLogin();
+        http.formLogin().defaultSuccessUrl("/main-page",true);
         http.authorizeRequests().mvcMatchers("/registration").anonymous();
         http.authorizeRequests().anyRequest().authenticated();
     }

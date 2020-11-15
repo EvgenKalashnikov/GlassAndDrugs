@@ -1,5 +1,5 @@
 package com.pharmacy.optican.demo.controller;
-import com.pharmacy.optican.demo.entity.User;
+import com.pharmacy.optican.demo.model.User;
 import com.pharmacy.optican.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
