@@ -1,6 +1,6 @@
 package com.pharmacy.optican.demo.service;
 
-import com.pharmacy.optican.demo.entity.User;
+import com.pharmacy.optican.demo.model.User;
 import com.pharmacy.optican.demo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;

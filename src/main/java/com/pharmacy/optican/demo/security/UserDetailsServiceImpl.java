@@ -1,6 +1,6 @@
 package com.pharmacy.optican.demo.security;
 
-import com.pharmacy.optican.demo.entity.User;
+import com.pharmacy.optican.demo.model.User;
 import com.pharmacy.optican.demo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -24,7 +24,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-        Optional<User> user = userRepository.findUserByUsername(username);
+        Optional<User> user = userRepository.findUserByName(username);
 
         if(user.isPresent()){
             return new UserSecurity(user.get());

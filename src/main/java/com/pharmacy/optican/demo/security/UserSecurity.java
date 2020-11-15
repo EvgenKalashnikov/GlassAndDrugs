@@ -1,6 +1,6 @@
 package com.pharmacy.optican.demo.security;
 
-import com.pharmacy.optican.demo.entity.User;
+import com.pharmacy.optican.demo.model.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -27,7 +27,7 @@ public class UserSecurity implements UserDetails {
 
     @Override
     public String getUsername() {
-        return this.user.getUsername();
+        return this.user.getName();
     }
 
     @Override
