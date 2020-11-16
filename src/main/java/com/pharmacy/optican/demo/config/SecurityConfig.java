@@ -13,9 +13,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
-        http.formLogin().defaultSuccessUrl("/main-page",true);
-        http.authorizeRequests().mvcMatchers("/registration").anonymous();
+        http.formLogin().loginPage("/login-page").defaultSuccessUrl("/main-page",true);
+        http.authorizeRequests().mvcMatchers("/login-page","/registration").anonymous();
+        http.authorizeRequests().mvcMatchers("/user-page/**").authenticated();
+        http.authorizeRequests().mvcMatchers("/css/**","/main-page").permitAll();
         http.authorizeRequests().anyRequest().authenticated();
+
     }
 
     @Bean

@@ -21,4 +21,9 @@ public class User {
     private String name;
     @Column(name = "password")
     private String password;
+
+    private String email;
+    private String phone;
+    private String firstname;
+    private String lastname;
 }

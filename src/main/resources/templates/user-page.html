@@ -1,0 +1,62 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <title>Название сайта</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<header class="top">
+    
+</header>
+<nav>
+    <ul>
+        <li ><a href="/main-page">ГЛАВНАЯ СТРАНИЦА</a></li>
+        <li sec:authorize="isAnonymous()"><a href="/login-page">ВХОД</a>
+        <li sec:authorize="isAnonymous()"><a href="/registration">РЕГИСТРАЦИЯ</a></li>
+        <li sec:authorize="isAuthenticated()" class="selected"><a href="/user-page">ЛИЧНЫЙ КАБИНЕТ</a></li>
+        <li sec:authorize="isAuthenticated()"><a href="/logout">Logout</a></li>
+    </ul>
+</nav>
+<div id="tableContainer">
+    <div id="tableRow">
+        <section id="leftsection">
+            <h1>Личный кабинет</h1>
+            <p>Виден только текущему юзеру</p>
+            <p>ID: [[${user.getId()}]]</p>
+            <p>LOGIN: [[${user.getName()}]]</p>
+            <p>PASSWORD: [[${user.getPassword()}]]</p>
+            <p>EMAIL: [[${user.getEmail()}]]</p>
+            <p>PHONE: [[${user.getPhone()}]]</p>
+            <p>FIRSTNAME: [[${user.getFirstname()}]]</p>
+            <p>LASTNAME: [[${user.getLastname()}]]</p>
+
+
+        </section>
+        <section id="main">
+            <h1>Личные данные</h1>
+            <form action="/update-user" method="post">
+                Логин :<input type="text" name="name" th:value="${user.getName()}" readonly>
+                <br>
+                Пароль:<input type="text" name="password" placeholder="new password">
+                <br>
+                email:<input type="text" name="email" th:value="${user.getEmail()}">
+                <br>
+                phone:<input type="text" name="phone" th:value="${user.getPhone()}">
+                <br>
+                Имя:<input type="text" name="firstname" th:value="${user.getName()}">
+                <br>
+                Фамилия:<input type="text" name="lastname" th:value="${user.getLastname()}">
+                <br>
+                <input  type="submit" value="Изменить">
+            </form>
+           
+        </section>
+       
+    </div>
+</div>
+<footer>
+    &copy; 2020, Название сайта
+</footer>
+</body>
+</html>

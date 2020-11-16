@@ -1,12 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="UTF-8">
-    <title>Main page</title>
+    <title>Название сайта</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
-<h1>Welcome</h1>
-
-<p>logout <a href="/logout">выйти</a> </p>
+<header class="top">
+    
+</header>
+<nav>
+    <ul>
+        <li class="selected"><a href="/main-page">ГЛАВНАЯ СТРАНИЦА</a></li>
+        <li sec:authorize="isAnonymous()"><a href="/login-page">ВХОД</a>
+        <li sec:authorize="isAnonymous()"><a href="/registration">РЕГИСТРАЦИЯ</a></li>
+        <li sec:authorize="isAuthenticated()"><a href="/user-page">ЛИЧНЫЙ КАБИНЕТ</a></li>
+        <li sec:authorize="isAuthenticated()"><a href="/logout">Logout</a></li>
+    </ul>
+</nav>
+<div id="tableContainer">
+    <div id="tableRow">
+        <section id="leftsection">
+            <h1>Главная страница</h1>
+            <p>Видна всем</p>
+        </section>
+        <section id="main">
+            <h1>Это главная страница</h1>
+            <p>
+               Разная информация для всех
+            </p>
+           
+        </section>
+       
+    </div>
+</div>
+<footer>
+    &copy; 2020, Название сайта
+</footer>
 </body>
 </html>

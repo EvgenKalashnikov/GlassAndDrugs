@@ -12,8 +12,8 @@
 <nav>
     <ul>
         <li><a href="/main-page">ГЛАВНАЯ СТРАНИЦА</a></li>
-        <li sec:authorize="isAnonymous()"><a href="/login-page">ВХОД</a>
-        <li sec:authorize="isAnonymous()" class="selected"><a href="/registration">РЕГИСТРАЦИЯ</a></li>
+        <li sec:authorize="isAnonymous()" class="selected"><a href="/login-page">ВХОД</a>
+        <li sec:authorize="isAnonymous()"><a href="/registration">РЕГИСТРАЦИЯ</a></li>
         <li sec:authorize="isAuthenticated()"><a href="/user-page">ЛИЧНЫЙ КАБИНЕТ</a></li>
         <li sec:authorize="isAuthenticated()"><a href="/logout">Logout</a></li>
     </ul>
@@ -21,26 +21,17 @@
 <div id="tableContainer">
     <div id="tableRow">
         <section id="leftsection">
-            <h1>Страница регистрации</h1>
+            <h1>Страница логина</h1>
             
-
         </section>
         <section id="main">
-            <h1>Регистрация</h1>
-            <form action="/registration" method="post">
-                Логин :<input type="text" name="name">
+            <h1>Это страница логина</h1>
+            <form method="post" action="/login-page">
+                Логин :<input type="text" name="username">
                 <br>
                 Пароль:<input type="text" name="password">
                 <br>
-                email:<input type="text" name="email">
-                <br>
-                phone:<input type="text" name="phone">
-                <br>
-                Имя:<input type="text" name="firstname">
-                <br>
-                Фамилия:<input type="text" name="lastname">
-                <br>
-                <input  type="submit" value="Регистрация">
+                <input  type="submit" value="Войти">
             </form>
            
         </section>
