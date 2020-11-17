@@ -11,10 +11,10 @@
 </header>
 <nav>
     <ul>
-        <li><a href="/main-page">ГЛАВНАЯ СТРАНИЦА</a></li>
-        <li sec:authorize="isAnonymous()"><a href="/login-page">ВХОД</a>
-        <li sec:authorize="isAnonymous()" class="selected"><a href="/registration">РЕГИСТРАЦИЯ</a></li>
-        <li sec:authorize="isAuthenticated()"><a href="/user-page">ЛИЧНЫЙ КАБИНЕТ</a></li>
+        <li><a href="/main_page">ГЛАВНАЯ СТРАНИЦА</a></li>
+        <li sec:authorize="isAnonymous()"><a href="/login_page">ВХОД</a>
+        <li sec:authorize="isAnonymous()" class="selected"><a href="/registration_page">РЕГИСТРАЦИЯ</a></li>
+        <li sec:authorize="isAuthenticated()"><a href="/user_page">ЛИЧНЫЙ КАБИНЕТ</a></li>
         <li sec:authorize="isAuthenticated()"><a href="/logout">Logout</a></li>
     </ul>
 </nav>
@@ -27,20 +27,30 @@
         </section>
         <section id="main">
             <h1>Регистрация</h1>
-            <form action="/registration" method="post">
-                Логин :<input type="text" name="name">
-                <br>
-                Пароль:<input type="text" name="password">
-                <br>
-                email:<input type="text" name="email">
-                <br>
-                phone:<input type="text" name="phone">
-                <br>
-                Имя:<input type="text" name="firstname">
-                <br>
-                Фамилия:<input type="text" name="lastname">
-                <br>
-                <input  type="submit" value="Регистрация">
+            <form action="/registration_page" method="post">
+                <table>
+                    <tr>
+                        <td>ПОЧТА:</td>
+                        <td><input type="text" name="email"></td>
+                    </tr>
+                    <tr>
+                        <td>ПАРОЛЬ:</td>
+                        <td><input type="text" name="password"></td>
+                    </tr>
+                    <tr>
+                        <td>ТЕЛЕФОН:</td>
+                        <td><input type="text" name="phone"></td>
+                    </tr>
+                    <tr>
+                        <td>ФИО:</td>
+                        <td><input type="text" name="fullName"></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><input type="submit" value="Регистрация"></td>
+                    </tr>
+
+                </table>
             </form>
            
         </section>

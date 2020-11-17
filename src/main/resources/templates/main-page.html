@@ -11,10 +11,10 @@
 </header>
 <nav>
     <ul>
-        <li class="selected"><a href="/main-page">ГЛАВНАЯ СТРАНИЦА</a></li>
-        <li sec:authorize="isAnonymous()"><a href="/login-page">ВХОД</a>
-        <li sec:authorize="isAnonymous()"><a href="/registration">РЕГИСТРАЦИЯ</a></li>
-        <li sec:authorize="isAuthenticated()"><a href="/user-page">ЛИЧНЫЙ КАБИНЕТ</a></li>
+        <li class="selected"><a href="/main_page">ГЛАВНАЯ СТРАНИЦА</a></li>
+        <li sec:authorize="isAnonymous()"><a href="/login_page">ВХОД</a>
+        <li sec:authorize="isAnonymous()"><a href="/registration_page">РЕГИСТРАЦИЯ</a></li>
+        <li sec:authorize="isAuthenticated()"><a href="/user_page">ЛИЧНЫЙ КАБИНЕТ</a></li>
         <li sec:authorize="isAuthenticated()"><a href="/logout">Logout</a></li>
     </ul>
 </nav>

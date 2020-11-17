@@ -27,7 +27,7 @@ public class UserSecurity implements UserDetails {
 
     @Override
     public String getUsername() {
-        return this.user.getName();
+        return this.user.getEmail();
     }
 
     @Override
