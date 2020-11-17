@@ -1,0 +1,70 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <title>Название сайта</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<header class="top">
+    
+</header>
+<nav>
+    <ul>
+        <li ><a href="/main_page">ГЛАВНАЯ СТРАНИЦА</a></li>
+        <li sec:authorize="isAnonymous()"><a href="/login_page">ВХОД</a>
+        <li sec:authorize="isAnonymous()"><a href="/registration_page">РЕГИСТРАЦИЯ</a></li>
+        <li sec:authorize="isAuthenticated()" class="selected"><a href="/user_page">ЛИЧНЫЙ КАБИНЕТ</a></li>
+        <li sec:authorize="isAuthenticated()"><a href="/logout">Logout</a></li>
+    </ul>
+</nav>
+<div id="tableContainer">
+    <div id="tableRow">
+        <section id="leftsection">
+            <h1>Личный кабинет</h1>
+            <p>Виден только текущему юзеру</p>
+            <p th:text="${'ID : ' + user.getId()}"></p>
+            <p th:text="${'EMAIL : ' + user.getEmail()}"></p>
+            <p th:text="${'PHONE : ' + user.getPhone()}"></p>
+            <p th:text="${'PASSWORD : ' + user.getPassword()}"></p>
+            <p th:text="${'FULL_NAME : ' + user.getFullName()}"></p>
+
+        </section>
+        <section id="main">
+            <h1>Личные данные</h1>
+            <form action="/update_user" method="post">
+                <table>
+                    <tr>
+                        <td>ПОЧТА:</td>
+                        <td><input type="text" name="email" th:value="${user.getEmail()}"></td>
+                    </tr>
+                    <tr>
+                        <td>ПАРОЛЬ:</td>
+                        <td><input type="text" name="password" placeholder="new password"></td>
+                    </tr>
+                    <tr>
+                        <td>ТЕЛЕФОН:</td>
+                        <td><input type="text" name="phone" th:value="${user.getPhone()}"></td>
+                    </tr>
+                    <tr>
+                        <td>ФИО:</td>
+                        <td><input type="text" name="fullName" th:value="${user.getFullName()}"></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><input  type="submit" value="Изменить"></td>
+                    </tr>
+
+                </table>
+            <input type="hidden" name="id" th:value="${user.getId()}">
+            </form>
+           
+        </section>
+       
+    </div>
+</div>
+<footer>
+    &copy; 2020, Название сайта
+</footer>
+</body>
+</html>

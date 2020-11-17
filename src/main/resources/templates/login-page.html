@@ -1,0 +1,56 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <title>Название сайта</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<header class="top">
+    
+</header>
+<nav>
+    <ul>
+        <li><a href="/main_page">ГЛАВНАЯ СТРАНИЦА</a></li>
+        <li sec:authorize="isAnonymous()" class="selected"><a href="/login_page">ВХОД</a>
+        <li sec:authorize="isAnonymous()"><a href="/registration_page">РЕГИСТРАЦИЯ</a></li>
+        <li sec:authorize="isAuthenticated()"><a href="/user_page">ЛИЧНЫЙ КАБИНЕТ</a></li>
+        <li sec:authorize="isAuthenticated()"><a href="/logout">Logout</a></li>
+    </ul>
+</nav>
+<div id="tableContainer">
+    <div id="tableRow">
+        <section id="leftsection">
+            <h1>Страница логина</h1>
+            <img src="/img/our_photo/p4.png">
+        </section>
+        <section id="main">
+            <h1>Это страница логина</h1>
+
+            <form method="post" action="/login_page">
+                <table>
+                    <tr>
+                        <td>Логин :</td>
+                        <td><input type="text" name="username"></td>
+                    </tr>
+                    <tr>
+                        <td>Пароль:</td>
+                        <td><input type="text" name="password"></td>
+                    </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="submit" value="Войти"></td>
+                </tr>
+
+                </table>
+            </form>
+           
+        </section>
+       
+    </div>
+</div>
+<footer>
+    &copy; 2020, Название сайта
+</footer>
+</body>
+</html>

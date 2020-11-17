@@ -6,8 +6,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "users")
-@Setter
-@Getter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -17,8 +16,12 @@ public class User {
     @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "user_seq")
     @SequenceGenerator(name = "user_seq", sequenceName = "user_id_seq", allocationSize = 1)
     private Long id;
-    @Column(name = "name")
-    private String name;
+    @Column(name = "email")
+    private String email;
+    @Column(name = "phone")
+    private String phone;
     @Column(name = "password")
     private String password;
+    @Column(name = "full_name")
+    private String fullName;
 }
