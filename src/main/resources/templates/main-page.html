@@ -1,41 +1,166 @@
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<!DOCTYPE html>
+<html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <title>Название сайта</title>
-    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="/favicon.ico">
+    <title>Оптика Конотоп</title>
+    <link href="/css/bootstrap.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+    <link href="/css/style_main.css" rel="stylesheet">
 </head>
+
 <body>
-<header class="top">
-    
-</header>
-<nav>
-    <ul>
-        <li class="selected"><a href="/main_page">ГЛАВНАЯ СТРАНИЦА</a></li>
-        <li sec:authorize="isAnonymous()"><a href="/login_page">ВХОД</a>
-        <li sec:authorize="isAnonymous()"><a href="/registration_page">РЕГИСТРАЦИЯ</a></li>
-        <li sec:authorize="isAuthenticated()"><a href="/user_page">ЛИЧНЫЙ КАБИНЕТ</a></li>
-        <li sec:authorize="isAuthenticated()"><a href="/logout">Logout</a></li>
-    </ul>
-</nav>
-<div id="tableContainer">
-    <div id="tableRow">
-        <section id="leftsection">
-            <h1>Главная страница</h1>
-            <p>Видна всем</p>
-        </section>
-        <section id="main">
-            <h1>Это главная страница</h1>
-            <p>
-               Разная информация для всех
-            </p>
-           
-        </section>
-       
+<header class="header">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-5 col-sm-3 col-xs-12">
+                <div class="logo">
+                    <div class="logo_img">
+                        <img src="/img/header/logo.png" alt="#">
+                    </div>
+                    <p>Магазин Оптики - Конотоп</p>
+                </div>
+            </div>
+
+            <div class="col-md-2 col-sm-3 col-xs-12">
+                <div class="header_btn_wrap">
+                    <div class="header_btn_wrap_block">
+                        <button onclick="location.href='/user_page'" class="header_btn text-uppercase text-left popup_engineer_btn">
+                            Записаться <br>к доктору
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-2 col-sm-3 col-xs-6 text-left">
+                <div class="working_hours">
+                    <div class="working_hours_img">
+                        <img src="/img/header/clock.png" alt="#">
+                    </div>
+                    <p>без выходных <span>9:00 - 18:00</span></p>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-3 col-xs-6">
+                <div class="contact_us">
+                    <div class="contact_us_wrap">
+                        <a href="#"><img src="/img/header/phone.png" alt="#">+380-68-365-2260</a>
+                        <a class="phone_link" href="#">Заказать обратный звонок</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </div>
-</div>
-<footer>
-    &copy; 2020, Название сайта
-</footer>
+</header>
+
+<!-- Main -->
+<main class="main">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-6 col-md-7 wow fadeInLeft">
+                <h1><span>Индивидуальный подбор оптики<br></span>Доступные цены!</h1>
+                <div class="main_features">
+
+                    <div class="row">
+
+                        <div class="col-sm-3 col-xs-6">
+                            <div class="main_features_block">
+                                <img src="/img/main/icons/quality.png" alt="">
+                                <p>Высокое <br>качество</p>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-3 col-xs-6">
+                            <div class="main_features_block">
+                                <img src="/img/main/icons/time.png" alt="">
+                                <p>Доступная <br>цена</p>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-3 col-xs-6">
+                            <div class="main_features_block">
+                                <img class="small_img" src="/img/main/icons/guaranty.png" alt="">
+                                <p>Гарантия <br>3 года</p>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-3 col-xs-6">
+                            <div class="main_features_block">
+                                <img class="small_img" src="/img/main/icons/delivery.png" alt="">
+                                <p>Запись <br>к врачу</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+</main>
+
+
+
+</div> <!-- decoration_content -->
+
+</div> <!-- container -->
+</section>
+
+<div class="overlay"></div>
+
+<!-- Our works -->
+<section class="works">
+
+    <div class="container">
+        <div class="section_header">
+            <h2>Наши фото</h2>
+            <div class="section_header_sub"></div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 text-center wow fadeIn"><a href="/img/our_photo/big_img/p1.jpg"><img class="preview" src="/img/our_photo/p1.png" alt="window"></a></div>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 text-center wow fadeIn" data-wow-delay="0.1s"><a href="/img/our_photo/big_img/p2.jpg"><img class="preview" src="/img/our_photo/p2.png" alt="window"></a></div>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 text-center wow fadeIn" data-wow-delay="0.2s"><a href="/img/our_photo/big_img/p3.png"><img class="preview" src="/img/our_photo/p3.png" alt="window"></a></div>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 text-center wow fadeIn" data-wow-delay="0.3s"><a href="/img/our_photo/big_img/p4.jpg"><img class="preview" src="/img/our_photo/p4.png" alt="window"></a></div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- Contacts -->
+<section class="contacts">
+    <div class="container">
+        <div class="section_header">
+            <h2>Как нас найти</h2>
+            <div class="section_header_sub"></div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 col-md-6 wow fadeInLeft">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2498.1287009504263!2d33.20400621575995!3d51.2351245795913!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x412a49011d9905dd%3A0x27c2719e3941523b!2z0J7Qv9GC0LjQutCw!5e0!3m2!1sen!2sua!4v1605616400089!5m2!1sen!2sua" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+            </div>
+            <div class="col-lg-5 col-lg-offset-1 col-md-6 col-md-offset-0 wow fadeInRight">
+                <div class="contacts_info">
+
+                    <h3>Фактический адрес:</h3>
+                    <p>проспект Миру, будинок 17 Конотоп Sums'ka oblast Украина 41615</p>
+                    <h3>Телефон:</h3>
+                    <p>+380-68-365-2260</p>
+                    <h3>E-mail:</h3>
+                    <p>test@email.com</p>
+                    <h3>Режим работы:</h3>
+                    <p>9:00 - 18:00 без выходных</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 </body>
 </html>

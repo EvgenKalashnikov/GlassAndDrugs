@@ -27,7 +27,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 .mvcMatchers(sp().getLoginPage(),sp().getRegistrationPage()).anonymous()
-                .mvcMatchers(sp().getCssDir(),sp().getMainPage()).permitAll()
+                .mvcMatchers(sp().getCssDir(),sp().getMainPage(),sp().getImgDir()).permitAll()
                 .anyRequest().authenticated();
 
     }

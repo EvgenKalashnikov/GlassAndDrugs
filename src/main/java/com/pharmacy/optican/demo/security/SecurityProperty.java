@@ -14,4 +14,6 @@ public class SecurityProperty {
     private String userDir;
     @Value("${css_dir}")
     private String cssDir;
+    @Value("${img_dir}")
+    private String imgDir;
 }
