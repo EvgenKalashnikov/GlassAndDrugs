@@ -75,19 +75,20 @@
                 <h1><span>Личный кабинет<br></span></h1>
                 <form id="login_form" action="/login_page" method="post">
   <div class="form-group">
-   Email address
-    <input type="text" id="needchangeemail" name="username" class="form-control" aria-describedby="emailHelp">
+
+      <label class="header_btn_text" for="needchangeemail">Электронная почта</label>
+    <input type="text"  id="needchangeemail" name="username" class="form-control header_btn_enter text-left popup_engineer_btn" aria-describedby="emailHelp">
     
   </div>
   <div id="after_password" class="form-group">
-    Password
-    <input type="password" class="form-control" name="password">
+      <label class="header_btn_text" for="pass">Пароль</label>
+    <input type="password" id="pass" class="form-control header_btn_enter text-left popup_engineer_btn" name="password">
   </div>
                     <input type="hidden"
                            th:name="${_csrf.parameterName}"
                            th:value="${_csrf.token}" />
   <button type="submit" class="header_btn_enter text-uppercase text-left popup_engineer_btn">Войти</button>
-                    <input type="checkbox" id="register_check"> Регистрация
+                    <input type="checkbox" id="register_check"> <label for="register_check">Регистрация</label>
 </form>
 
                 

@@ -97,10 +97,10 @@
 
             <div class="col-lg-6 col-md-7 wow fadeInLeft">
                 <h1><span>Личный кабинет<br></span></h1>
-                <p th:text="'Почта: '+ ${user.getEmail()}"></p>
-                <p th:text="'Телефон: '+ ${user.getPhone()}"></p>
-                <p>Пароль: скрыт</p>
-                <p th:text="'ФИО: '+ ${user.getFullName()}"></p>
+                <p class="header_btn_text" th:text="'Почта: '+ ${user.getEmail()}"></p>
+                <p class="header_btn_text" th:text="'Телефон: '+ ${user.getPhone()}"></p>
+                <p class="header_btn_text">Пароль: скрыт</p>
+                <p class="header_btn_text" th:text="'ФИО: '+ ${user.getFullName()}"></p>
                  <button data-toggle="modal" data-target="#change_user" class="header_btn_enter text-uppercase text-left popup_engineer_btn">
                             Изменить
                         </button>
@@ -181,11 +181,11 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 
-<div class="modal fade" id="change_user" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade header_btn_text" id="change_user" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Изменить данные</h5>
+        <h5 class="modal-title header_btn_text" id="exampleModalLabel">Изменить данные</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -195,31 +195,31 @@
         <form action="/update_user" method="post">
   <div class="form-group">
     Электронная почта
-    <input type="text" name="email" placeholder="Электронная почта"  class="form-control" th:value="${user.getEmail()}" aria-describedby="emailHelp">
+    <input type="text" name="email" placeholder="Электронная почта"  class="form-control header_btn_enter" th:value="${user.getEmail()}" aria-describedby="emailHelp">
     
   </div>
-  <div class="form-group">
+  <div class="form-group ">
     Пароль
-    <input type="password" placeholder="Новый пароль" class="form-control" name="password">
+    <input type="password" placeholder="Новый пароль" class="form-control header_btn_enter" name="password">
   </div>
   <div class="form-group">
    Телефон
-    <input type="text" th:value="${user.getPhone()}" placeholder="Телефон" class="form-control" name="phone">
+    <input type="text" th:value="${user.getPhone()}" placeholder="Телефон" class="form-control header_btn_enter" name="phone">
   </div>
   <div class="form-group">
     ФИО
-    <input type="text" class="form-control" th:value="${user.getFullName()}" placeholder="Введите фамилию" name="fullName">
+    <input type="text" class="form-control header_btn_enter" th:value="${user.getFullName()}" placeholder="Введите фамилию" name="fullName">
   </div>
             <input type="hidden" name="id" th:value="${user.getId()}" >
             <input type="hidden"
                    th:name="${_csrf.parameterName}"
                    th:value="${_csrf.token}" />
-  <button type="submit" class="btn btn-primary">Сохранить</button>
+  <button type="submit" class="btn btn-primary header_btn_enter">Сохранить</button>
 </form>
 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+        <button type="button" class="btn btn-secondary header_btn_text" data-dismiss="modal">Закрыть</button>
         
       </div>
     </div>

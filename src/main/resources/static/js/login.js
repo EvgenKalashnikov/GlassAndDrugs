@@ -33,7 +33,7 @@ window.addEventListener('DOMContentLoaded', function () {
         let input = document.createElement('input');
         input.setAttribute("id", "phone_id")
         input.setAttribute("type", "text");
-        input.setAttribute("class", "form-control");
+        input.setAttribute("class", "form-control header_btn_enter text-left popup_engineer_btn");
         input.setAttribute("name", "phone");
         return input;
     }
@@ -41,7 +41,7 @@ window.addEventListener('DOMContentLoaded', function () {
         let input = document.createElement('input');
         input.setAttribute("id", "fullname_id")
         input.setAttribute("type", "text");
-        input.setAttribute("class", "form-control");
+        input.setAttribute("class", "form-control header_btn_enter text-left popup_engineer_btn");
         input.setAttribute("name", "fullName");
         return input;
     }
@@ -61,6 +61,7 @@ window.addEventListener('DOMContentLoaded', function () {
         let newDiv = document.createElement('label');
         newDiv.setAttribute("id", "label_phone")
         newDiv.setAttribute("for", "phone_id");
+        newDiv.setAttribute("class", "header_btn_text");
         newDiv.innerHTML = "Телефон";
         return newDiv;
     }
@@ -68,6 +69,7 @@ window.addEventListener('DOMContentLoaded', function () {
         let newDiv = document.createElement('label');
         newDiv.setAttribute("id", "label_fullname")
         newDiv.setAttribute("for", "fullname_id");
+        newDiv.setAttribute("class", "header_btn_text");
         newDiv.innerHTML = "ФИО";
 
         return newDiv;
