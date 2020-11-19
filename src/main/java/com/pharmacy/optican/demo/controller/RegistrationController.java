@@ -16,14 +16,9 @@ public class RegistrationController {
         this.userService = userService;
     }
 
-    @GetMapping("/registration_page")
-    public String regUser(){
-        return "registration-page";
-    }
-
     @PostMapping("/registration_page")
     public String addUser(User user){
             userService.saveUser(user);
-        return "redirect:/main_page";
+        return "redirect:/user_page";
     }
 }
