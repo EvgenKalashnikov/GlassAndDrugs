@@ -1,5 +1,6 @@
 package com.pharmacy.optican.demo.security;
 
+import com.pharmacy.optican.demo.model.RoleEnum;
 import com.pharmacy.optican.demo.model.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -17,7 +18,7 @@ public class UserSecurity implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(()->"ROLE_user");
+        return List.of(()-> RoleEnum.ROLE_user.name());
     }
 
     @Override

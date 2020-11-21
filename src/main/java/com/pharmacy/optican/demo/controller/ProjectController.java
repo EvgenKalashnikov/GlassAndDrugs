@@ -9,4 +9,8 @@ public class ProjectController {
     public String mainPage(){
         return "main-page";
     }
+    @GetMapping("/")
+    public String rootPage(){
+        return "redirect:/main_page";
+    }
 }
