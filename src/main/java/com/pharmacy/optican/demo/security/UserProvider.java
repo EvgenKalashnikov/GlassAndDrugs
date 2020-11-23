@@ -31,9 +31,9 @@ public class UserProvider implements AuthenticationProvider {
 
         UserDetails user = userDetailsService.loadUserByUsername(username);
 
-        if(passwordEncoder.matches(password,user.getPassword())){
+        if (passwordEncoder.matches(password, user.getPassword())) {
             return new UsernamePasswordAuthenticationToken(user,
-                    user.getPassword(),user.getAuthorities());
+                    user.getPassword(), user.getAuthorities());
         }
         throw new BadCredentialsException("Bad Credentials");
 

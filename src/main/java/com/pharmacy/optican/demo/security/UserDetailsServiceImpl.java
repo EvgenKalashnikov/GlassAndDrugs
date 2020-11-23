@@ -23,10 +23,10 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     public UserDetails loadUserByUsername(String emailOrPhone) throws UsernameNotFoundException {
 
         User user = userService.findUserByEmail(emailOrPhone);
-        if(user == null){
+        if (user == null) {
             user = userService.findUserByPhone(emailOrPhone);
         }
-        if(user != null){
+        if (user != null) {
             return new UserSecurity(user);
         }
         throw new UsernameNotFoundException("no user");

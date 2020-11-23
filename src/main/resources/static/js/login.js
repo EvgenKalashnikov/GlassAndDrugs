@@ -6,9 +6,9 @@ window.addEventListener('DOMContentLoaded', function () {
     let needchangeemail = document.querySelector("#needchangeemail");
 
     register_check.addEventListener('click', function (event) {
-        if(register_check.checked) {
-            login_form.setAttribute("action","/registration_page");
-            needchangeemail.setAttribute("name","email");
+        if (register_check.checked) {
+            login_form.setAttribute("action", "/registration_page");
+            needchangeemail.setAttribute("name", "email");
             let newDivPhone = createNewDivPhone();
             after_password.after(newDivPhone);
             newDivPhone.append(createNewLabelPhone());
@@ -19,16 +19,17 @@ window.addEventListener('DOMContentLoaded', function () {
             after_password.after(newDivFullname);
             newDivFullname.append(createNewLabelFullname());
             newDivFullname.append(createFullnameInput())
-            document.querySelector("#main_f").setAttribute("hidden","hidden");
+            document.querySelector("#main_f").setAttribute("hidden", "hidden");
 
         } else {
-            login_form.setAttribute("action","/login_page");
-            needchangeemail.setAttribute("name","username");
+            login_form.setAttribute("action", "/login_page");
+            needchangeemail.setAttribute("name", "username");
             document.querySelector("#div_phone").remove();
             document.querySelector("#div_fullname").remove();
             document.querySelector("#main_f").removeAttribute("hidden");
         }
     });
+
     function createPhoneInput() {
         let input = document.createElement('input');
         input.setAttribute("id", "phone_id")
@@ -37,6 +38,7 @@ window.addEventListener('DOMContentLoaded', function () {
         input.setAttribute("name", "phone");
         return input;
     }
+
     function createFullnameInput() {
         let input = document.createElement('input');
         input.setAttribute("id", "fullname_id")
@@ -45,18 +47,21 @@ window.addEventListener('DOMContentLoaded', function () {
         input.setAttribute("name", "fullName");
         return input;
     }
+
     function createNewDivFullname() {
         let newDiv = document.createElement('div');
         newDiv.setAttribute("id", "div_fullname")
         newDiv.setAttribute("class", "form-group");
         return newDiv;
     }
+
     function createNewDivPhone() {
         let newDiv = document.createElement('div');
         newDiv.setAttribute("id", "div_phone")
         newDiv.setAttribute("class", "form-group");
         return newDiv;
     }
+
     function createNewLabelPhone() {
         let newDiv = document.createElement('label');
         newDiv.setAttribute("id", "label_phone")
@@ -65,6 +70,7 @@ window.addEventListener('DOMContentLoaded', function () {
         newDiv.innerHTML = "Телефон";
         return newDiv;
     }
+
     function createNewLabelFullname() {
         let newDiv = document.createElement('label');
         newDiv.setAttribute("id", "label_fullname")
@@ -74,8 +80,6 @@ window.addEventListener('DOMContentLoaded', function () {
 
         return newDiv;
     }
-
-
 
 
 });

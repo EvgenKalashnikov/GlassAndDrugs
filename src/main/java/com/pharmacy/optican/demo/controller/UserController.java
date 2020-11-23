@@ -1,4 +1,5 @@
 package com.pharmacy.optican.demo.controller;
+
 import com.pharmacy.optican.demo.model.User;
 import com.pharmacy.optican.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,18 +22,16 @@ public class UserController {
     }
 
     @GetMapping("/user_page")
-    public String userPage(Authentication authentication, Model model){
-        model.addAttribute("user",userService.findUserByEmail(authentication.getName()));
+    public String userPage(Authentication authentication, Model model) {
+        model.addAttribute("user", userService.findUserByEmail(authentication.getName()));
         return "user-page";
     }
 
     @PostMapping("/update_user")
-    public String userUpdate(User user){
-            userService.updateUser(user);
+    public String userUpdate(User user) {
+        userService.updateUser(user);
         return "redirect:/user_page";
     }
-
-
 
 
 }

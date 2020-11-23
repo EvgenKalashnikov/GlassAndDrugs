@@ -29,73 +29,72 @@ public class UserService {
         this.passwordEncoder = passwordEncoder;
     }
 
-    public void saveUser(User user){
-        if(validateUser(user)) {
+    public void saveUser(User user) {
+        if (validateUser(user)) {
             user.setPassword(passwordEncoder.encode(user.getPassword()));
             try {
                 userRepository.save(user);
                 setAuth(user);
-            }catch (Exception e){
-                logger.warn("save error");
+            } catch (Exception e) {
+                logger.error("save error");
             }
         }
     }
 
-    public User findUserByEmail(String email)
-    {
+    public User findUserByEmail(String email) {
         Optional<User> user = userRepository.findUserByEmail(email);
         return user.orElse(null);
     }
-    public User findUserByPhone(String phone)
-    {
+
+    public User findUserByPhone(String phone) {
         Optional<User> user = userRepository.findUserByPhone(phone);
         return user.orElse(null);
     }
 
     @PreAuthorize("isAuthenticated()")
-    public void updateUser(User user){
+    public void updateUser(User user) {
         Optional<User> oldUser = userRepository.findById(user.getId());
         oldUser.ifPresent(u -> {
 
-            if(!user.getEmail().isEmpty() && !user.getEmail().equals(u.getEmail())){
+            if (!user.getEmail().isEmpty() && !user.getEmail().equals(u.getEmail())) {
                 u.setEmail(user.getEmail());
             }
-            if(!user.getPhone().isEmpty() && !user.getPhone().equals(u.getPhone())){
+            if (!user.getPhone().isEmpty() && !user.getPhone().equals(u.getPhone())) {
                 u.setPhone(user.getPhone());
             }
-            if(!user.getFullName().equals(u.getFullName())){
+            if (!user.getFullName().equals(u.getFullName())) {
                 u.setFullName(user.getFullName());
             }
-            if(!user.getPassword().isEmpty() && !user.getPassword().equals(u.getPassword())) {
+            if (!user.getPassword().isEmpty() && !user.getPassword().equals(u.getPassword())) {
                 u.setPassword(user.getPassword());
                 saveUser(u);
             } else {
-                    try {
-                        userRepository.save(u);
-                        setAuth(u);
-                    } catch (Exception e){
-                        logger.warn("update error");
-                    }
+                try {
+                    userRepository.save(u);
+                    setAuth(u);
+                } catch (Exception e) {
+                    logger.error("update error");
+                }
 
             }
 
         });
-        }
+    }
 
-        private boolean validateUser(User user){
-            return !user.getEmail().isEmpty()
-                    && !user.getPhone().isEmpty()
-                    && !user.getPassword().isEmpty();
-
-        }
-
-        private void setAuth(User user){
-            SecurityContextHolder
-                    .getContext()
-                    .setAuthentication(
-                            new UsernamePasswordAuthenticationToken(
-                                    user.getEmail(),user.getPassword(),new UserSecurity(user).getAuthorities()));
-        }
+    private boolean validateUser(User user) {
+        return !user.getEmail().isEmpty()
+                && !user.getPhone().isEmpty()
+                && !user.getPassword().isEmpty();
 
     }
+
+    private void setAuth(User user) {
+        SecurityContextHolder
+                .getContext()
+                .setAuthentication(
+                        new UsernamePasswordAuthenticationToken(
+                                user.getEmail(), user.getPassword(), new UserSecurity(user).getAuthorities()));
+    }
+
+}
 

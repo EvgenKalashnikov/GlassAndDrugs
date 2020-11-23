@@ -1,4 +1,5 @@
 package com.pharmacy.optican.demo.config;
+
 import com.pharmacy.optican.demo.security.SecurityProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,22 +21,22 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http
                 .formLogin().loginPage(sp().getLoginPage())
-                .defaultSuccessUrl(sp().getUserPage(),true)
+                .defaultSuccessUrl(sp().getUserPage(), true)
                 .and()
                 .authorizeRequests()
-                .mvcMatchers(sp().getLoginPage(),sp().getRegistrationPage()).anonymous()
-                .mvcMatchers("/",sp().getCssDir(),sp().getMainPage(),sp().getImgDir(),sp().getJsDir()).permitAll()
+                .mvcMatchers(sp().getLoginPage(), sp().getRegistrationPage()).anonymous()
+                .mvcMatchers("/", sp().getCssPath(), sp().getMainPage(), sp().getImgPath(), sp().getJsPath()).permitAll()
                 .anyRequest().authenticated();
 
     }
 
     @Bean
-    public PasswordEncoder passwordEncoder(){
+    public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
     @Bean
-    public SecurityProperty sp(){
+    public SecurityProperty sp() {
         return new SecurityProperty();
     }
 }
