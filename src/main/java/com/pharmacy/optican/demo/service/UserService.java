@@ -3,6 +3,8 @@ package com.pharmacy.optican.demo.service;
 import com.pharmacy.optican.demo.model.User;
 import com.pharmacy.optican.demo.repository.UserRepository;
 import com.pharmacy.optican.demo.security.UserSecurity;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.validator.routines.EmailValidator;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
+
 
 @Service
 public class UserService {
@@ -30,7 +33,8 @@ public class UserService {
     }
 
     public void saveUser(User user) {
-        if (validateUser(user)) {
+        if (validateUser(user) && validatePhone(user.getPhone()) && validateEmail(user.getEmail())) {
+            trimAndLowerCase(user);
             user.setPassword(passwordEncoder.encode(user.getPassword()));
             try {
                 userRepository.save(user);
@@ -53,39 +57,36 @@ public class UserService {
 
     @PreAuthorize("isAuthenticated()")
     public void updateUser(User user) {
+
         Optional<User> oldUser = userRepository.findById(user.getId());
         oldUser.ifPresent(u -> {
 
-            if (!user.getEmail().isEmpty() && !user.getEmail().equals(u.getEmail())) {
-                u.setEmail(user.getEmail());
+            if (!StringUtils.isBlank(user.getEmail()) && !user.getEmail().equals(u.getEmail()) && validateEmail(user.getEmail())) {
+                u.setEmail(user.getEmail().trim().toLowerCase());
             }
-            if (!user.getPhone().isEmpty() && !user.getPhone().equals(u.getPhone())) {
-                u.setPhone(user.getPhone());
+            if (!StringUtils.isBlank(user.getPhone()) && !user.getPhone().equals(u.getPhone()) && validatePhone(user.getPhone())) {
+                u.setPhone(user.getPhone().trim());
             }
-            if (!user.getFullName().equals(u.getFullName())) {
-                u.setFullName(user.getFullName());
+            if (user.getFullName() != null && !user.getFullName().equals(u.getFullName())) {
+                u.setFullName(user.getFullName().trim());
             }
-            if (!user.getPassword().isEmpty() && !user.getPassword().equals(u.getPassword())) {
-                u.setPassword(user.getPassword());
-                saveUser(u);
-            } else {
-                try {
-                    userRepository.save(u);
-                    setAuth(u);
-                } catch (Exception e) {
-                    logger.error("update error");
-                }
+            if (!StringUtils.isBlank(user.getPassword()) && !passwordEncoder.matches(user.getPassword(), u.getPassword())) {
+                u.setPassword(passwordEncoder.encode(user.getPassword()).trim());
+            }
 
+            try {
+                userRepository.save(u);
+                setAuth(u);
+            } catch (Exception e) {
+                logger.error("update error");
             }
+
 
         });
     }
 
     private boolean validateUser(User user) {
-        return !user.getEmail().isEmpty()
-                && !user.getPhone().isEmpty()
-                && !user.getPassword().isEmpty();
-
+        return !StringUtils.isAnyBlank(user.getEmail(), user.getPhone(), user.getPassword());
     }
 
     private void setAuth(User user) {
@@ -96,5 +97,18 @@ public class UserService {
                                 user.getEmail(), user.getPassword(), new UserSecurity(user).getAuthorities()));
     }
 
+
+    private boolean validateEmail(String email) {
+        return EmailValidator.getInstance().isValid(email);
+    }
+
+    private boolean validatePhone(String phone) {
+        return StringUtils.isNumeric(phone) && phone.length() <= 12;
+    }
+
+    private void trimAndLowerCase(User user) {
+        user.setEmail(user.getEmail().trim().toLowerCase());
+        user.setPassword(user.getPassword().trim());
+    }
 }
 
