@@ -9,6 +9,7 @@ window.addEventListener('DOMContentLoaded', function () {
         if (register_check.checked) {
             login_form.setAttribute("action", "/registration_page");
             needchangeemail.setAttribute("name", "email");
+            needchangeemail.setAttribute("type", "email");
             let newDivPhone = createNewDivPhone();
             after_password.after(newDivPhone);
             newDivPhone.append(createNewLabelPhone());
@@ -24,6 +25,7 @@ window.addEventListener('DOMContentLoaded', function () {
         } else {
             login_form.setAttribute("action", "/login_page");
             needchangeemail.setAttribute("name", "username");
+            needchangeemail.setAttribute("type", "text");
             document.querySelector("#div_phone").remove();
             document.querySelector("#div_fullname").remove();
             document.querySelector("#main_f").removeAttribute("hidden");
@@ -36,6 +38,7 @@ window.addEventListener('DOMContentLoaded', function () {
         input.setAttribute("type", "text");
         input.setAttribute("class", "form-control header_btn_enter text-left popup_engineer_btn");
         input.setAttribute("name", "phone");
+        input.setAttribute("maxlength", "12");
         return input;
     }
 
