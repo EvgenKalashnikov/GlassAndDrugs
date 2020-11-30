@@ -14,6 +14,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Objects;
 import java.util.Optional;
 
 
@@ -58,6 +59,10 @@ public class UserService {
     @PreAuthorize("isAuthenticated()")
     public void updateUser(User user) {
 
+        if (Objects.isNull(user)) {
+            return;
+        }
+
         Optional<User> oldUser = userRepository.findById(user.getId());
         oldUser.ifPresent(u -> {
 
@@ -67,7 +72,7 @@ public class UserService {
             if (!StringUtils.isBlank(user.getPhone()) && !user.getPhone().equals(u.getPhone()) && validatePhone(user.getPhone())) {
                 u.setPhone(user.getPhone().trim());
             }
-            if (user.getFullName() != null && !user.getFullName().equals(u.getFullName())) {
+            if (Objects.nonNull(user.getFullName()) && !user.getFullName().equals(u.getFullName())) {
                 u.setFullName(user.getFullName().trim());
             }
             if (!StringUtils.isBlank(user.getPassword()) && !passwordEncoder.matches(user.getPassword(), u.getPassword())) {
