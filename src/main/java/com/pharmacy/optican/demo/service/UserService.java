@@ -35,7 +35,7 @@ public class UserService {
 
     public void saveUser(User user) {
         if (validateUser(user) && validatePhone(user.getPhone()) && validateEmail(user.getEmail())) {
-            trimAndLowerCase(user);
+            stripAndLowerCase(user);
             user.setPassword(passwordEncoder.encode(user.getPassword()));
             try {
                 userRepository.save(user);
@@ -67,16 +67,16 @@ public class UserService {
         oldUser.ifPresent(u -> {
 
             if (!StringUtils.isBlank(user.getEmail()) && !user.getEmail().equals(u.getEmail()) && validateEmail(user.getEmail())) {
-                u.setEmail(user.getEmail().trim().toLowerCase());
+                u.setEmail(user.getEmail().strip().toLowerCase());
             }
             if (!StringUtils.isBlank(user.getPhone()) && !user.getPhone().equals(u.getPhone()) && validatePhone(user.getPhone())) {
-                u.setPhone(user.getPhone().trim());
+                u.setPhone(user.getPhone().strip());
             }
             if (Objects.nonNull(user.getFullName()) && !user.getFullName().equals(u.getFullName())) {
-                u.setFullName(user.getFullName().trim());
+                u.setFullName(user.getFullName().strip());
             }
             if (!StringUtils.isBlank(user.getPassword()) && !passwordEncoder.matches(user.getPassword(), u.getPassword())) {
-                u.setPassword(passwordEncoder.encode(user.getPassword()).trim());
+                u.setPassword(passwordEncoder.encode(user.getPassword()).strip());
             }
 
             try {
@@ -111,9 +111,9 @@ public class UserService {
         return StringUtils.isNumeric(phone) && phone.length() <= 12;
     }
 
-    private void trimAndLowerCase(User user) {
-        user.setEmail(user.getEmail().trim().toLowerCase());
-        user.setPassword(user.getPassword().trim());
+    private void stripAndLowerCase(User user) {
+        user.setEmail(user.getEmail().strip().toLowerCase());
+        user.setPassword(user.getPassword().strip());
     }
 }
 
