@@ -1,70 +1,237 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+>
 <head>
-    <meta charset="UTF-8">
-    <title>Название сайта</title>
-    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="/favicon.ico">
+    <title>Оптика Конотоп</title>
+    <link href="/css/bootstrap.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+    <link href="/css/style_main.css" rel="stylesheet">
 </head>
+
 <body>
-<header class="top">
-    
-</header>
-<nav>
-    <ul>
-        <li ><a href="/main_page">ГЛАВНАЯ СТРАНИЦА</a></li>
-        <li sec:authorize="isAnonymous()"><a href="/login_page">ВХОД</a>
-        <li sec:authorize="isAnonymous()"><a href="/registration_page">РЕГИСТРАЦИЯ</a></li>
-        <li sec:authorize="isAuthenticated()" class="selected"><a href="/user_page">ЛИЧНЫЙ КАБИНЕТ</a></li>
-        <li sec:authorize="isAuthenticated()"><a href="/logout">Logout</a></li>
-    </ul>
-</nav>
-<div id="tableContainer">
-    <div id="tableRow">
-        <section id="leftsection">
-            <h1>Личный кабинет</h1>
-            <p>Виден только текущему юзеру</p>
-            <p th:text="${'ID : ' + user.getId()}"></p>
-            <p th:text="${'EMAIL : ' + user.getEmail()}"></p>
-            <p th:text="${'PHONE : ' + user.getPhone()}"></p>
-            <p th:text="${'PASSWORD : ' + user.getPassword()}"></p>
-            <p th:text="${'FULL_NAME : ' + user.getFullName()}"></p>
+<header class="header">
+    <div class="container">
+        <div class="row">
 
-        </section>
-        <section id="main">
-            <h1>Личные данные</h1>
-            <form action="/update_user" method="post">
-                <table>
-                    <tr>
-                        <td>ПОЧТА:</td>
-                        <td><input type="text" name="email" th:value="${user.getEmail()}"></td>
-                    </tr>
-                    <tr>
-                        <td>ПАРОЛЬ:</td>
-                        <td><input type="text" name="password" placeholder="new password"></td>
-                    </tr>
-                    <tr>
-                        <td>ТЕЛЕФОН:</td>
-                        <td><input type="text" name="phone" th:value="${user.getPhone()}"></td>
-                    </tr>
-                    <tr>
-                        <td>ФИО:</td>
-                        <td><input type="text" name="fullName" th:value="${user.getFullName()}"></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td><input  type="submit" value="Изменить"></td>
-                    </tr>
+            <div class="col-md-5 col-sm-3 col-xs-12">
+                <div class="logo">
+                    <div class="logo_img">
+                        <a href="/main_page"><img src="img/header/logo.png" alt="#"></a>
+                    </div>
+                    <p>Магазин Оптики - Конотоп</p>
 
-                </table>
-            <input type="hidden" name="id" th:value="${user.getId()}">
-            </form>
-           
-        </section>
-       
+
+                </div>
+            </div>
+
+            <div class="col-md-2 col-sm-3 col-xs-12">
+                <div class="header_btn_wrap">
+                	
+                    <div class="header_btn_wrap_block">
+
+                        <form action="/logout" method="post">
+                            <input type="hidden"
+                                   th:name="${_csrf.parameterName}"
+                                   th:value="${_csrf.token}" />
+                            <input type="submit" class="header_btn_enter text-uppercase text-left popup_engineer_btn" value="Выйти">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        
+            
+
+            <div class="col-md-2 col-sm-3 col-xs-6 text-left">
+                <div class="working_hours">
+                    <div class="working_hours_img">
+                        <img src="img/header/clock.png" alt="#">
+                    </div>
+                    <p>без выходных <span>9:00 - 18:00</span></p>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-3 col-xs-6">
+                <div class="contact_us">
+                    <div class="contact_us_wrap">
+                        <a href="#"><img src="img/header/phone.png" alt="#">+380-68-365-2260</a>
+                        <a class="phone_link" href="#">Заказать обратный звонок</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-2 col-sm-3 col-xs-12">
+                <div class="header_btn_wrap">
+                	
+                    <div class="header_btn_wrap_block">
+
+                        <button onclick="location.href='/user_page'" class="header_btn text-uppercase text-left popup_engineer_btn">
+                            Личный <br> кабинет
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2 col-sm-3 col-xs-12">
+                <div class="header_btn_wrap">
+                    
+                    <div class="header_btn_wrap_block">
+
+                        <button onclick="location.href='/user_page'" class="header_btn text-uppercase text-left popup_engineer_btn">
+                            Запись <br> к доктору
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+
+        </div>
     </div>
-</div>
-<footer>
-    &copy; 2020, Название сайта
+</header>
+
+<!-- Main -->
+<main class="main">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-6 col-md-7 wow fadeInLeft">
+                <h1><span>Личный кабинет<br></span></h1>
+                <p class="header_btn_text" th:text="'Почта: '+ ${user.getEmail()}"></p>
+                <p class="header_btn_text" th:text="'Телефон: '+ ${user.getPhone()}"></p>
+                <p class="header_btn_text">Пароль: скрыт</p>
+                <p class="header_btn_text" th:text="'ФИО: '+ ${user.getFullName()}"></p>
+                 <button data-toggle="modal" data-target="#change_user" class="header_btn_enter text-uppercase text-left popup_engineer_btn">
+                            Изменить
+                        </button>
+               <div class="main_features">
+
+                    <div class="row">
+
+                        <div class="col-sm-3 col-xs-6">
+                            <div class="main_features_block">
+                                <img src="img/main/icons/quality.png" alt="">
+                                <p>Высокое <br>качество</p>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-3 col-xs-6">
+                            <div class="main_features_block">
+                                <img src="img/main/icons/time.png" alt="">
+                                <p>Доступная <br>цена</p>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-3 col-xs-6">
+                            <div class="main_features_block">
+                                <img class="small_img" src="img/main/icons/guaranty.png" alt="">
+                                <p>Проверка <br>зрения</p>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-3 col-xs-6">
+                            <div class="main_features_block">
+                                <img class="small_img" src="img/main/icons/delivery.png" alt="">
+                                <p>Запись <br>к врачу</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                </div>
+
+            </div>
+
+
+
+        </div>
+    </div>
+</main>
+</div> <!-- decoration_content -->
+
+</div> <!-- container -->
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4 col-sm-push-8 col-xs-12">
+                <div class="contacts">
+                    <a class="phone" href="#">+380-68-365-2260</a>
+                    <a class="email" href="#">test@email.com</a>
+                </div>
+            </div>
+            <div class="col-sm-4 col-xs-12">
+                <div class="logo">
+                    <img src="/img/header/logo.png" alt="#">
+                </div>
+            </div>
+            <div class="col-sm-4 col-sm-pull-8 col-xs-12">
+                <div class="copyright">
+                </div>
+            </div>
+        </div>
+    </div>
 </footer>
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<div class="modal fade header_btn_text" id="change_user" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title header_btn_text" id="exampleModalLabel">Изменить данные</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+        <div class="modal-body">
+
+            <form action="/update_user" method="post">
+                <div class="form-group">
+                    Электронная почта
+                    <input aria-describedby="emailHelp" class="form-control header_btn_enter" maxlength="50"
+                           name="email"
+                           placeholder="Электронная почта" th:value="${user.getEmail()}" type="email">
+
+                </div>
+                <div class="form-group ">
+                    Пароль
+                    <input class="form-control header_btn_enter" name="password" placeholder="Новый пароль"
+                           type="password">
+                </div>
+                <div class="form-group">
+                    Телефон
+                    <input class="form-control header_btn_enter" maxlength="12" name="phone" placeholder="Телефон"
+                           th:value="${user.getPhone()}" type="text">
+                </div>
+                <div class="form-group">
+                    ФИО
+                    <input class="form-control header_btn_enter" name="fullName" placeholder="Введите фамилию"
+                           th:value="${user.getFullName()}" type="text">
+                </div>
+                <input name="id" th:value="${user.getId()}" type="hidden">
+                <input th:name="${_csrf.parameterName}"
+                       th:value="${_csrf.token}"
+                       type="hidden"/>
+                <button class="btn btn-primary header_btn_enter" type="submit">Сохранить</button>
+            </form>
+
+        </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary header_btn_text" data-dismiss="modal">Закрыть</button>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 </body>
 </html>

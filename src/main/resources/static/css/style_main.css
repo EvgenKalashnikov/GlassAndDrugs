@@ -1,8 +1,4 @@
-/*Fonts Family*/
-/*Colors*/
-/*Basic settings*/
 html {
-  /* overflow-x: hidden; */
   font-size: 10px;
 }
 
@@ -34,7 +30,7 @@ textarea:focus {
 }
 
 .form {
-  /*margin-top: 2rem;*/
+
   padding: 2rem 5rem;
   text-align: center;
   border-radius: 1rem;
@@ -159,12 +155,9 @@ textarea:focus {
 }
 
 
-
-/*Header*/
 .header {
   height: 10rem;
   background-color: #ffffff;
-  /*border: 1px solid red;*/
 }
 
 .header .logo {
@@ -201,14 +194,32 @@ textarea:focus {
   font-weight: 700;
   font-style: normal;
   color: #55a831;
-  /*p {
-				display: inline-block;
-			vertical-align: top;
-				font-size: 1.4rem;
-				line-height: 1.2;
-				.bold();
-				color: @green;
-			}*/
+
+}
+.header_btn_enter {
+
+  padding: 1rem 1rem 1rem 1rem;
+  border: 2px solid #55a831;
+  border-radius: 1rem;
+  background-color: #ffffff;
+  font-size: 1.4rem;
+  line-height: 1.2;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  color: #55a831;
+
+}
+.header_btn_text {
+
+  padding: 1rem 1rem 1rem 1rem;
+  font-size: 1.4rem;
+  line-height: 1.2;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  color: #0089cd;
+
 }
 
 .header_btn_wrap {
@@ -233,7 +244,7 @@ textarea:focus {
 .header .working_hours {
   height: 10rem;
   display: table;
-  /*text-align: right;*/
+
 }
 
 .header .working_hours_img {
@@ -278,7 +289,7 @@ textarea:focus {
   font-weight: 700;
   font-style: normal;
   color: #333333;
-  /*border: 1px solid blue;*/
+
 }
 
 .header .contact_us_wrap a img {
@@ -294,7 +305,7 @@ textarea:focus {
   text-decoration: underline;
 }
 
-/*Main*/
+
 .main {
   padding: 10rem 0;
   background: #ffffff url(../img/main/bg.png) 0 0 no-repeat;
@@ -302,7 +313,6 @@ textarea:focus {
 
 .main h1 {
   margin: 0;
-  /*margin-top: -4rem;*/
   font-size: 5.5rem;
   line-height: 1.5;
   font-family: 'Open Sans', sans-serif;
@@ -343,7 +353,55 @@ textarea:focus {
   margin-top: 2rem;
 }
 
-/*glazing*/
+.main2 {
+  padding: 10rem 0;
+  background: #ffffff;
+}
+
+.main2 h1 {
+  margin: 0;
+
+  font-size: 3.5rem;
+  line-height: 1.5;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  color: #333333;
+}
+
+.main2 h1 span {
+  font-size: 2.6rem;
+}
+
+.main2_features {
+  padding: 0;
+  margin-top: 13rem;
+}
+
+.main_features2_block {
+  text-align: center;
+}
+
+.main2_features_block .small_img {
+  margin-top: 1rem;
+}
+
+.main2_features_block p {
+  margin-top: -6rem;
+  font-size: 1.3rem;
+  line-height: 1.3;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+.main2_form {
+  margin-top: 2rem;
+}
+
+
 .glazing {
   padding: 8rem 0;
 }
@@ -362,10 +420,6 @@ textarea:focus {
   font-size: 1.8rem;
   font-weight: 600;
   text-decoration: underline;
-  /*&:focus {
-				text-decoration: none;
-				color: #454545;
-			}*/
 }
 
 .glazing_block a:hover {
@@ -464,7 +518,7 @@ textarea:focus {
   color: #454545;
 }
 
-/*Decoration*/
+
 .decoration {
   padding: 8rem 0;
   background-color: #f7f7f7;
@@ -490,18 +544,9 @@ textarea:focus {
   border: none;
   text-decoration: none;
   color: #0089cd;
-  /*border-top: 1rem solid @blue;
-				height: 8rem;
-				padding: 2rem 1rem;
-				background: -webkit-linear-gradient(-90deg, #ebebeb 0%, #ebebeb 0%, rgba(255, 255, 255, 0) 100%);
-				background: -moz-linear-gradient(-90deg, #ebebeb 0%, #ebebeb 0%, rgba(255, 255, 255, 0) 100%);
-				background: -o-linear-gradient(-90deg, #ebebeb 0%, #ebebeb 0%, rgba(255, 255, 255, 0) 100%);
-				background: -ms-linear-gradient(-90deg, #ebebeb 0%, #ebebeb 0%, rgba(255, 255, 255, 0) 100%);
-				background: linear-gradient(180deg, #ebebeb 0%, #ebebeb 0%, rgba(255, 255, 255, 0) 100%);*/
 }
 
 .decoration_item .no_click {
-  /*border: 1px solid red;*/
   height: 8rem;
   padding: 2rem 0;
   border-top: 1rem solid #f7f7f7;
@@ -553,7 +598,7 @@ textarea:focus {
   display: none;
 }
 
-/*Our works*/
+
 .works {
   padding: 5rem 0;
 }
@@ -563,7 +608,6 @@ textarea:focus {
 }
 
 .works a[data-fancybox="gallery"] .lupa {
-  /* position: ; */
   top: 0;
   left: 0;
   left: 50%;
@@ -579,7 +623,6 @@ textarea:focus {
   opacity: 1;
 }
 
-/*Guarantees*/
 .guarantees {
   padding: 6rem 0 1rem;
   background-color: #0089cd;
@@ -609,7 +652,6 @@ textarea:focus {
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
-/*Payment*/
 .payment {
   padding: 6rem 0;
 }
@@ -649,7 +691,6 @@ textarea:focus {
 }
 
 
-/* Timer */
  .timer1 {
   padding: 10px;
   border: 1px solid grey;
@@ -667,7 +708,7 @@ textarea:focus {
 }
 .numbers1 {
   display: block;
-  float: left;  
+  float: left;
   color: white;
   font-size: 40px;
   margin-right: 10px;
@@ -687,12 +728,6 @@ textarea:focus {
 
 
 
-
-
-
-
-
-/*Contacts*/
 .contacts {
   padding: 6rem 0;
 }
@@ -733,7 +768,7 @@ textarea:focus {
   width: 100%;
 }
 
-/*Feedback*/
+
 .feedback {
   padding: 6rem 0;
   background-color: #0089cd;
@@ -769,12 +804,10 @@ textarea:focus {
 .footer .contacts {
   padding: 0;
   margin: auto;
-  /*border: 1px solid red;*/
   text-align: right;
 }
 
 .footer .contacts a {
-  /*border: 1px solid blue;*/
   display: block;
 }
 
@@ -792,7 +825,6 @@ textarea:focus {
   text-decoration: underline;
 }
 
-/*Modals*/
 .popup,
 .popup_engineer,
 .popup_calc_end {
@@ -831,7 +863,6 @@ textarea:focus {
 .popup_content,
 .popup_engineer_content,
 .popup_calc_end_content {
-  /* display: none; */
   position: fixed;
   top: 10%;
   left: 50%;
@@ -961,11 +992,6 @@ textarea:focus {
   width: 40rem;
   padding: 1rem 5rem 4rem;
   background-color: #ffffff;
-  /*	label {
-			margin-bottom: 1rem;
-			font-size: 1.5rem;
-			.regular();
-		}*/
 }
 
 .popup_calc_profile_content h2 {
@@ -1047,7 +1073,6 @@ textarea:focus {
   padding: 1rem 5rem;
 }
 
-/*Media*/
 @media (max-width: 1400px) {
   .main {
     background-position: -30rem 0;
@@ -1105,7 +1130,7 @@ textarea:focus {
     font-size: 1.8rem;
   }
 
-  /*Payment*/
+
   .payment_img img {
     margin-right: 1rem;
   }
@@ -1387,12 +1412,12 @@ textarea:focus {
   .footer .contacts {
     padding: 0;
     margin: auto;
-    /*border: 1px solid red;*/
+
     text-align: center;
   }
 
   .footer .contacts a {
-    /*border: 1px solid blue;*/
+
     display: block;
   }
 
@@ -1510,7 +1535,7 @@ textarea:focus {
 
   .header .contact_us_wrap a img {
     margin-right: 0.5rem;
-    /*width: 10%;*/
+
   }
 
   .header .contact_us_wrap .phone_link {
@@ -1750,16 +1775,16 @@ textarea:focus {
   }
 }
 
-/* small devices, tablets */
+
 @media only screen and (max-width: 768px) {
   .animated {
-    /*css transitions*/
+
     -webkit-transition-property: none !important;
     transition-property: none !important;
-    /*css transforms*/
+
     -webkit-transform: none !important;
     transform: none !important;
-    /*css animations*/
+
     -webkit-animation: none !important;
     animation: none !important;
   }

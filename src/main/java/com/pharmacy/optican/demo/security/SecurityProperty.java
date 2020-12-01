@@ -10,10 +10,14 @@ public class SecurityProperty {
     private String registrationPage;
     @Value("${main_page}")
     private String mainPage;
-    @Value("${user_dir}")
-    private String userDir;
-    @Value("${css_dir}")
-    private String cssDir;
-    @Value("${img_dir}")
-    private String imgDir;
+    @Value("${user_path}")
+    private String userPath;
+    @Value("${css_path}")
+    private String cssPath;
+    @Value("${img_path}")
+    private String imgPath;
+    @Value("${user_page}")
+    private String userPage;
+    @Value("${js_path}")
+    private String jsPath;
 }

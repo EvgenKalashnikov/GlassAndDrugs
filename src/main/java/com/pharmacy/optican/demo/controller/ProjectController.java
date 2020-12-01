@@ -6,7 +6,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class ProjectController {
     @GetMapping("/main_page")
-    public String mainPage(){
+    public String mainPage() {
         return "main-page";
+    }
+
+    @GetMapping("/")
+    public String rootPage() {
+        return "redirect:/main_page";
     }
 }

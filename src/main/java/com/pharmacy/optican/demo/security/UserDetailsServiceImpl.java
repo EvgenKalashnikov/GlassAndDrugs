@@ -1,15 +1,12 @@
 package com.pharmacy.optican.demo.security;
 
 import com.pharmacy.optican.demo.model.User;
-import com.pharmacy.optican.demo.repository.UserRepository;
 import com.pharmacy.optican.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
-
-import java.util.Optional;
 
 @Component
 public class UserDetailsServiceImpl implements UserDetailsService {
@@ -26,10 +23,10 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     public UserDetails loadUserByUsername(String emailOrPhone) throws UsernameNotFoundException {
 
         User user = userService.findUserByEmail(emailOrPhone);
-        if(user == null){
+        if (user == null) {
             user = userService.findUserByPhone(emailOrPhone);
         }
-        if(user != null){
+        if (user != null) {
             return new UserSecurity(user);
         }
         throw new UsernameNotFoundException("no user");
