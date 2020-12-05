@@ -17,7 +17,7 @@ public enum GeneralException {
 
     private final String message;
     private final HttpStatus httpStatus;
-    private String exceptionCode;
+    private final String exceptionCode;
     private final ZonedDateTime timestamp;
 
     GeneralException(String message, HttpStatus httpStatus, String exceptionCode, ZonedDateTime timestamp) {
