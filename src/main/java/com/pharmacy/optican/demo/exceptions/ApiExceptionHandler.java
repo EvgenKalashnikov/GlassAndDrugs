@@ -15,7 +15,7 @@ public class ApiExceptionHandler {
     public ResponseEntity<Object> handleApiRequestException(ApiRequestException exception) {
 
         String message = exception.getMessage();
-        HttpStatus httpStatus = ExceptionCode.valueOf(message).getHttpStatus();
+        HttpStatus httpStatus = GeneralException.valueOf(message).getHttpStatus();
 
         ApiException apiException = new ApiException(exception.getMessage(), exception,
             httpStatus, ZonedDateTime.now(ZoneId.of("Z")));

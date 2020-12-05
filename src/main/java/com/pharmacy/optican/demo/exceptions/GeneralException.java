@@ -9,18 +9,21 @@ import java.time.ZonedDateTime;
 
 @ToString
 @Getter
-public enum ExceptionCode {
+public enum GeneralException {
 
-    USER_NOT_FOUND("User is not present", HttpStatus.NOT_FOUND, ZonedDateTime.now(ZoneId.of("Z"))),
-    USER_ALREADY_EXIST("User already exist", HttpStatus.BAD_REQUEST, ZonedDateTime.now(ZoneId.of("Z")));
+
+    USER_NOT_FOUND("User is not present", HttpStatus.NOT_FOUND, "GEEX001", ZonedDateTime.now(ZoneId.of("Z"))),
+    USER_ALREADY_EXIST("User already exist", HttpStatus.BAD_REQUEST, "GEEX002", ZonedDateTime.now(ZoneId.of("Z")));
 
     private final String message;
     private final HttpStatus httpStatus;
+    private String exceptionCode;
     private final ZonedDateTime timestamp;
 
-    ExceptionCode(String message, HttpStatus httpStatus, ZonedDateTime timestamp) {
+    GeneralException(String message, HttpStatus httpStatus, String exceptionCode, ZonedDateTime timestamp) {
         this.message = message;
         this.httpStatus = httpStatus;
+        this.exceptionCode = exceptionCode;
         this.timestamp = timestamp;
     }
 }
