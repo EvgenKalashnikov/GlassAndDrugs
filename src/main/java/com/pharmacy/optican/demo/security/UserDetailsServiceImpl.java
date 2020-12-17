@@ -1,7 +1,7 @@
 package com.pharmacy.optican.demo.security;
 
 import com.pharmacy.optican.demo.model.User;
-import com.pharmacy.optican.demo.service.UserService;
+import com.pharmacy.optican.demo.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -12,10 +12,10 @@ import org.springframework.stereotype.Component;
 public class UserDetailsServiceImpl implements UserDetailsService {
 
 
-    private final UserService userService;
+    private final UserServiceImpl userService;
 
     @Autowired
-    public UserDetailsServiceImpl(UserService userService) {
+    public UserDetailsServiceImpl(UserServiceImpl userService) {
         this.userService = userService;
     }
 
